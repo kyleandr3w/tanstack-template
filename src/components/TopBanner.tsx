@@ -1,28 +1,32 @@
-import { useCallback } from 'react'
 import { X } from 'lucide-react'
-import { useAppState } from '../store'
+import { useState } from 'react'
 
 export function TopBanner() {
-  const { isBannerVisible, setBannerVisible } = useAppState();
+  const [visible, setVisible] = useState(true)
 
-  const handleCloseBanner = useCallback(() => {
-    setBannerVisible(false);
-  }, [setBannerVisible]);
-
-  if (!isBannerVisible) {
-    return null;
-  }
+  if (!visible) return null
 
   return (
-    <div className="relative w-full max-w-3xl px-2 py-2 mx-auto mt-4 mb-2 font-medium text-white bg-orange-500 rounded-md text-sm">
+    <div className="flex items-center justify-between px-4 py-2 text-sm text-white bg-gradient-to-r from-orange-500 to-red-600">
+      <p className="flex-1">
+        <a
+          href="https://sonoraxav.com"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold underline-offset-2 hover:underline"
+        >
+          SonoraX AV
+        </a>{' '}
+        · Tech chat for professional audio, video, networking, home automation, and security systems.
+      </p>
       <button
-        onClick={handleCloseBanner}
-        className="absolute top-2 right-2 p-1 bg-orange-600 hover:bg-orange-700 rounded transition-colors"
-        aria-label="Close banner"
+        type="button"
+        aria-label="Dismiss banner"
+        onClick={() => setVisible(false)}
+        className="ml-4 rounded-full p-1 hover:bg-white/10 focus:outline-none focus:ring focus:ring-white/40"
       >
         <X className="w-4 h-4" />
       </button>
-      <p className='px-4'>This app works with <a href='https://docs.netlify.com/build/ai-gateway/overview/' className='underline'>Netlify AI Gateway</a>. If you want to use your own Anthropic key, update <a href='https://docs.netlify.com/build/environment-variables/overview/' className='underline'>the environment variables</a> in your project.</p>
     </div>
-  );
+  )
 }
