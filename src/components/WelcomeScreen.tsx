@@ -15,21 +15,33 @@ export const WelcomeScreen = ({
 }: WelcomeScreenProps) => (
   <div className="flex items-center justify-center flex-1 px-4">
     <div className="w-full max-w-3xl mx-auto text-center">
-      <h1 className="mb-4 text-6xl font-bold text-transparent uppercase bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text">
+      {/* Title */}
+      <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">
         <a
           href="https://sonoraxav.com"
           target="_blank"
           rel="noreferrer"
-          className="text-white hover:underline"
+          className="hover:underline"
         >
           SonoraX AV
         </a>{' '}
-        Tech Chat
+        • Design &amp; Support Chat
       </h1>
-      <p className="w-2/3 mx-auto mb-6 text-lg text-gray-400">
-        Ask questions about professional audio, video, networking, home automation,
-        and security systems. I&apos;ll help you think through design, gear, and setup.
+
+      {/* Intro text */}
+      <p className="w-11/12 max-w-2xl mx-auto mb-4 text-base text-gray-300 md:text-lg">
+        Ask questions about pro audio, video, networking, home automation, or security systems.
+        I&apos;ll help you plan systems, troubleshoot issues, and understand your options in plain English.
       </p>
+
+      {/* Example bullets */}
+      <ul className="w-11/12 max-w-2xl mx-auto mb-6 text-sm text-left text-gray-400 list-disc list-inside md:text-base">
+        <li>&quot;What gear do I need for a 12x15 home theater?&quot;</li>
+        <li>&quot;How should I wire speakers for distributed audio in 4 zones?&quot;</li>
+        <li>&quot;What&apos;s a simple camera setup to cover my front yard and driveway?&quot;</li>
+      </ul>
+
+      {/* Input form */}
       <form onSubmit={handleSubmit}>
         <div className="relative max-w-xl mx-auto">
           <textarea
@@ -41,7 +53,7 @@ export const WelcomeScreen = ({
                 handleSubmit(e);
               }
             }}
-            placeholder='Example: "Design a 10-seat conference room" or "Help with my home theater wiring"...'
+            placeholder='Example: "Design a 10-seat conference room with AVoIP & ceiling mics" or "Help me plan my home theater speakers."'
             className="w-full py-3 pl-4 pr-12 overflow-hidden text-sm text-white placeholder-gray-400 border rounded-lg resize-none border-orange-500/20 bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-transparent"
             rows={1}
             style={{ minHeight: '88px' }}
