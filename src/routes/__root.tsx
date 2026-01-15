@@ -1,13 +1,11 @@
+// src/routes/__root.tsx
 import {
-  createRootRoute,
   Outlet,
+  createRootRoute,
   HeadContent,
   Scripts,
 } from '@tanstack/react-router'
-
-import { ConvexClientProvider } from '../convex'
-
-import appCss from '../styles.css?url'
+import type { ReactNode } from 'react'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -23,25 +21,26 @@ export const Route = createRootRoute({
         title: 'SonoraX AV – Smart Systems Assistant',
       },
     ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
-  });
+  }),
+  component: RootComponent,
+})
 
+function RootComponent() {
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  )
+}
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html>
       <head>
         <HeadContent />
       </head>
       <body>
-        <ConvexClientProvider>
-          {children}
-        </ConvexClientProvider>
+        {children}
         <Scripts />
       </body>
     </html>
