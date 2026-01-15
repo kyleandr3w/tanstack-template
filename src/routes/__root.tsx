@@ -31,13 +31,6 @@ export const Route = createRootRoute({
     ],
   }),
 
-  component: () => (
-    <RootDocument>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </RootDocument>
-  ),
-})
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
