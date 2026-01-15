@@ -29,7 +29,7 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
-  }),
+  });
 
 
 function RootDocument({ children }: { children: React.ReactNode }) {
